@@ -1,12 +1,14 @@
 const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
 const express = require('express')
+const env = require('dotenv')
+
 const app = express()
 const port = 3000
 
-
+env.config();
 // Connection URL
-const url = 'mongodb+srv://chandu:iamchandu@cluster0.jpohj.azure.mongodb.net/sample_airbnb?retryWrites=true&w=majority';
+const url = process.env.URL;
 
 // Database Name
 const dbName = 'sample_airbnb';
