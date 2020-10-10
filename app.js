@@ -53,6 +53,8 @@ app.get('/list', (req, res) => {
         const db = client.db(dbName);
 
         findDocuments(db, function (docs) {
+            res.setHeader("Access-Control-Allow-Origin", "*");
+            res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
             res.setHeader('Content-Type', 'application/json');
             res.send(docs);
             client.close();
