@@ -1,1 +1,1 @@
-mongodb+srv://chandu:<password>@cluster0.jpohj.azure.mongodb.net/<dbname>?retryWrites=true&w=majority
+mongodb+srv://chandu:iamchandu@cluster0.jpohj.azure.mongodb.net/sample_airbnb?retryWrites=true&w=majority

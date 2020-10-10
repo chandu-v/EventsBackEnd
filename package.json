@@ -1,0 +1,25 @@
+{
+  "name": "back-end-repo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chandu-v/EventsBackEnd.git"
+  },
+  "author": "chandu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chandu-v/EventsBackEnd/issues"
+  },
+  "homepage": "https://github.com/chandu-v/EventsBackEnd#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "http-server": "^0.12.3",
+    "mongodb": "^3.6.2"
+  }
+}
