@@ -11,28 +11,24 @@ env.config();
 const url = process.env.URL;
 
 // Database Name
-const dbName = 'sample_airbnb';
+const dbName = 'namlatec-db';
+const collectionName = 'documents';
 
 
 const findDocuments = function (db, callback) {
     // Get the documents collection
-    const collection = db.collection('listingsAndReviews');
+    const collection = db.collection(collectionName);
     // Find some documents
     collection.find({}).toArray(function (err, docs) {
         assert.equal(err, null);
         console.log("Found the following records");
-        for (let index = 0; index < 10; index++) {
-            const element = docs[index];
-            console.log(element);
-        }
-        //   console.log(docs)
         callback(docs);
     });
 }
 
 const insertDocuments = function (db, callback) {
-    // Get the documents collection
-    const collection = db.collection('documents');
+    // Insert the documents collection
+    const collection = db.collection(collectionName);
     // Insert some documents
     collection.insertMany([
         { a: 1 }, { a: 2 }, { a: 3 }
@@ -53,41 +49,28 @@ app.get('/list', (req, res) => {
     // Use connect method to connect to the server
     MongoClient.connect(url, function (err, client) {
         assert.equal(null, err);
-        console.log("Connected successfully to server");
-
+        console.log("Connected successfully to server")
         const db = client.db(dbName);
 
-
-        findDocuments(db, function () {
-    res.send('Hey dude');
-
+        findDocuments(db, function (docs) {
+            res.setHeader('Content-Type', 'application/json');
+            res.send(docs);
             client.close();
-
         });
-
-
     });
-
 });
 
-app.get("/insert",(req,res)=>{
-// Use connect method to connect to the server
-MongoClient.connect(url, function (err, client) {
-    assert.equal(null, err);
-    console.log("Connected successfully to server");
-
-    const db = client.db(dbName);
-
-    insertDocuments(db, function () {
-        res.send("inserted");
-
-        client.close();
+app.get("/insert", (req, res) => {
+    // Use connect method to connect to the server
+    MongoClient.connect(url, function (err, client) {
+        assert.equal(null, err);
+        console.log("Connected successfully to server");
+        const db = client.db(dbName);
+        insertDocuments(db, function () {
+            res.send("inserted");
+            client.close();
+        });
     });
-
-
-
-});
-
 })
 
 app.listen(port, () => {
