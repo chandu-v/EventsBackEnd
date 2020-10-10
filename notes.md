@@ -1,0 +1,1 @@
+mongodb+srv://chandu:<password>@cluster0.jpohj.azure.mongodb.net/<dbname>?retryWrites=true&w=majority
