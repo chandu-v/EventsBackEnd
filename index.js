@@ -5,7 +5,7 @@ const env = require('dotenv');
 const { ObjectID } = require('mongodb');
 
 const app = express()
-const port = 3000
+const port = 80
 
 env.config();
 // Connection URL
